@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
-public class Bullet: MonoBehaviour
+
+public class Bullet : MonoBehaviour
 {
     Gun _gun;
-    public void SetGun(Gun gun) => _gun = gun; //privately setting/assign gun
-    private void OnCollisionEnter(Collision collision)
+    public void SetGun(Gun gun) => _gun = gun; //privately setting/assign gun. Gun should only be used once
+    void OnCollisionEnter(Collision collision)
     {
         gameObject.SetActive(false);//when collision occurs we are adding to the pool object
         _gun.AddToPool(this); //F12 to jump to the function

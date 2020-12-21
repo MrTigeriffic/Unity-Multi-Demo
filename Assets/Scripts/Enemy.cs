@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
@@ -30,6 +27,7 @@ public class Enemy : MonoBehaviour
             Instantiate(_ExplosionPrefab, impactPoint, transform.rotation); //plays the explosion prefab at enemy pos
             gameObject.SetActive(false);
         }
+
         
     }
 }

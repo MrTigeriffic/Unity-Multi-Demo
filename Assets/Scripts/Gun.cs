@@ -11,14 +11,15 @@ public class Gun : MonoBehaviour
 
     Vector3 _direction;
     float _nextShootTime;
-
     Queue<Bullet> _pool = new Queue<Bullet>();
+
     void Update()
     {
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var raycastHit, Mathf.Infinity))
         {
-            _direction = (raycastHit.point - _shootPoint.position).normalized;
-            _direction = new Vector3(_direction.x, 0, _direction.z);
+            _direction = raycastHit.point - _shootPoint.position;
+            _direction.Normalize();
+            _direction = new Vector3(_direction.x, 0, _direction.z); //makes sure the bullets spawned are at the same rate. Mouse position won't effect the direction
             transform.forward = _direction;
         }
         
@@ -28,7 +29,7 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
-        _nextShootTime = Time.time + _delay;
+        _nextShootTime = Time.time + _delay; //limits the time between each bullet. Rather than a bullet created every frame
         var bullet = GetBullet();
         bullet.transform.position = _shootPoint.position;
         bullet.transform.rotation = _shootPoint.rotation;

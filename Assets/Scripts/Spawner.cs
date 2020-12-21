@@ -21,15 +21,13 @@ public class Spawner : MonoBehaviour
         _nextSpawnTime = Time.time + _delay;
         Transform spawnPoint = ChooseSpawnPoint();
         Enemy enemy = ChooseEnemy();
-        
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-        
+        enemy.gameObject.SetActive(true);
     }
 
     Enemy ChooseEnemy()
     {
         int randomIndex = UnityEngine.Random.Range(0, _enemies.Length);
-        
         var enemy = _enemies[randomIndex];
         return enemy;
 
@@ -46,5 +44,6 @@ public class Spawner : MonoBehaviour
     bool ShouldSpawn()
     {
         return Time.time >= _nextSpawnTime;
+       
     }
 }
