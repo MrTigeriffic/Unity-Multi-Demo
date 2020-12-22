@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
         Transform spawnPoint = ChooseSpawnPoint();
         Enemy enemy = ChooseEnemy();
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-        enemy.gameObject.SetActive(true);
+        //enemy.gameObject.SetActive(true);
     }
 
     Enemy ChooseEnemy()
